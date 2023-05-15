@@ -631,7 +631,7 @@ included sliders.
 
 Shopware 6.4^ Extension
 
-### General
+#### General
 
 `Enabled`: Whether the plugin is enabled for the currently selected sales channel.
 
@@ -639,7 +639,7 @@ Shopware 6.4^ Extension
 
 `Private Key`: Private API Key found in my.clerk.io.
 
-### Add to Cart URL's
+#### Add to Cart URL's
 
 `Enabled`: Whether to allow adding product to cart via the submission of url params.
 
@@ -647,7 +647,7 @@ Shopware 6.4^ Extension
 
 `domain.com/addtocart?ids=SW10001,SW10002&qtys=5,2`
 
-### Live Search
+#### Live Search
 
 `Status`: If the live search is enabled.
 
@@ -667,7 +667,7 @@ Shopware 6.4^ Extension
 
 `Form Selector`: The CSS selector of the form element which wraps your Search Input.
 
-### Search Page
+#### Search Page
 
 `Status`: If the search page is enabled.
 
@@ -681,7 +681,7 @@ Shopware 6.4^ Extension
 
 `Content`: The content ID from my.clerk.io you wish to use to render the search page.
 
-### Faceted Search
+#### Faceted Search
 
 `Status`: If the facets are enabled for the search page.
 
@@ -694,7 +694,7 @@ Shopware 6.4^ Extension
 `Design`: The design ID for the design you wish to use when rendering the facets on the search page. ID must be numeric if used, is optional to use.
 
 
-### Product Page
+#### Product Page
 
 `Status`: If the product page recommendations are enabled for the current sales channel.
 
@@ -702,25 +702,25 @@ Shopware 6.4^ Extension
 
 `Content`: A comma separated list of the contents from my.clerk.io you wish to use to on the product page.
 
-### Category Page
+#### Category Page
 
 `Status`: If the category page recommendations are enabled for the current sales channel.
 
 `Content`: The content from my.clerk.io you wish to display at the top of the category page.
 
-### Cart Page
+#### Cart Page
 
 `Status`: If the cart page recommendations are enabled for the current sales channel.
 
 `Content`: The content from my.clerk.io you wish to display at the top of the category page.
 
-### Exit Intent
+#### Exit Inten
 
 `Status`: If the exit intent is enabled for the current sales channel.
 
 `Content`: The content from my.clerk.io you wish to use to display the exit intent.
 
-### PowerStep
+#### PowerStep
 
 `Status`: If you wish to display the powerstep with recommendations after an item is added to the cart.
 
@@ -729,3 +729,184 @@ Shopware 6.4^ Extension
 `Content`: A comma separated list contents from my.clerk.io which you wish to display within the powerstep.
 
 ## Integrations
+
+### Shopify
+
+#### DataSync
+
+`Shopify Domain`: domain-shop.myshopify.com
+
+`Shopify API Key`: Private app API key.
+
+`Shopify API Access Token`: Token from private shopify app.
+
+`Shopify API Secret`: One time revealed secret when creating Shopify private app credentials.
+
+`Default Image Size`: Custom measurements to importer image links. You want the size to be the biggest size the image will ever be displayed at for max efficiency. Normally this ranges between 160px - 400px in height, depending on the theme.
+
+`Shop Market`: The name of the market you wish the product data to sync with. For multilanaguage and currency sites, you can think of Market as the localization which affects availability and pricing. Optional, for single market sites.
+
+`Shop Locale`: The locale string used for the multilanguage sites. Eg. `da` or `da-dk`. This is only used for text translations which are localized. Meaning you can sync the translations independently from the pricing and availability models.
+
+`Prefix Urls with Locale`: Due to backwards compatibility with older designs, the choice to concatenate the locale string to the urls during data import can be selected here.
+
+`Custom Attributes`: Provide the custom attributes you wish to attempt to sync for the product. These attributes are either created using mutations in the admin api, or are contained in tags or metafield. This does not refer to variants or options.
+
+`Inventory Locations`: The name of alternate stock locations you wish to sync. Inventory locations can hold exclusive stock for products, meaning a product can be active and return stock 0, you do not provide the alternate stock location name due to it having no recorded stock in the abstract inventory. Always ask client which ones they set up if in doubt.
+
+`Include Pages`: Whether to sync CMS pages and blogs during daily sync.
+
+`Include Out-of-stock Products`: Include products with stock <= 0.
+
+`Include Continue Selling When OOS`: Force products with continue selling policy to always be in stock for sync.
+
+`Shopify Published Status`: Include / exclude products based on publication status.
+
+`Shopify Category Published Status`: Include / exclude categories based on publication status.
+
+`Shopify Pages Published Status`: Include / exclude pages based on publication status.
+
+`Enable Real Time Updates`: Enabled pushing product changes into Clerk using weebhook. Not that the data available in the webhook, depends on when it was created. Market info and publication contexts was added in 2022.
+
+`Only Import in Stock Variant Data`: Remove all option and variant references for non purchasable variants.
+
+`Separate Varaint Options`: Creates separate lists with the property variations for each variant. Usually the most common ones are Color and Size. 
+
+`Order History`: The number of days of order history to include in the daily sync.
+
+`Import Tags`: Choose whether to filter some tags out of the product data which is synced.
+
+`Include Subscriber State`: Include the commercial correspondance subscriber state as a field in the customer sync.
+
+### Shopware 6
+
+#### DataSync
+
+`Store URL`: The public URL of the webshop as seen when visiting it in the browser.
+
+`Access Key ID`: The access key ID as created under integrations in the Shopware 6 Admin.
+
+`Secret Access Key`: The one time access key created for the integration in the Shopware 6 Admin.
+
+`Language Name`: The Language name of the scope you wish to sync. Must be name as written within the Shopware 6 admin. Field also accepts the corresponding hashed ID for the language, but this id is only revealed in the network calls within the admin.
+
+`Page Size`: The size of the pages when syncing. Important due to Shopware 6 being self hosted, so some clients may run it on weaker hardware.
+
+`Default Image Size`: The default dimensions for the images we sync for products. 
+
+`Custom Attributes`: A comma separated list of attributes you wish to sync from the product. Unlike some of our other platforms, he it is possible to define a you want a nested field on the product with dot notation. Eg. `cheapestPrice.price.gross`
+
+`Include Product Properties`: Product Properties are like options in shopify. They are things like size, coolor material.
+
+`Include Product Tags`: Tags are simple string associated with a product. Including these will add a list of these string to the product data.
+
+`Order History`: The Number of days you wish to include when syncing order data daily. 
+
+### Shoporama
+
+#### DataSync
+
+`Store URL`: The domain of the shop as seen when visiting the site.
+
+`Access Token`: The access tokem created for the REST api in the Shoporama admin.
+
+`Custom Attributes`: A comma separated list of attributes you wish to read from the product data during daily sync.
+
+`Include Out-Of-Stock Products`: Whether to include OOS products during the daily sync.
+
+`Order History Days`: The number of days from current date you wish to look at when importing order data daily.
+
+`Image Format`: The file type of the images synced for products daily.
+
+### LightSpeed
+
+#### DataSync
+
+`Domain`: The public url of the webshop.
+
+`Cluster ID`: The server which supports your webshop. [Info](https://ecom-support.lightspeedhq.com/hc/en-us/articles/115000272353-2-b-Cluster-information)
+
+`API Key`: The API key created for the integration in the LightSpeed admin.
+
+`API Secret`: The one time secret created for the integration in the LightSpeed admin.
+
+`Language`: The language iso string you wish to get texts for. Eg. `en`
+
+`Auto Detect Attributes for Filtering`: Automatically attempt to sync all attributes used in the native site filters.
+
+`Custom Attributes`: A comma separated list of customn attributes, tags or metafields you wish to attempt to retrieve for products in the daily sync.
+
+`Image Size`: The size of the synced images in the product feed. Format is WxHxZoom, Eg. `300x400x1`
+
+`Include Orders`: Choose how much order data to include in the daily sync. If you receive rate limit warnings in sync, lowering this is advised as the limit is quite low from LightSpeed unless requested to be increased, and the order details cannot be queried in bulk for their containing line items.
+
+`Accepted Order Statuses`: A comma separated list of the status an order can have for it to be considered valid.
+
+`Include Out-Of-Stock Products`: Whether to include all products in sync regardless of stock count.
+
+`Collect Emails`: Whether to include customer emails when syncing order data.
+
+`Include Pages`: Whether to include CMS pages and Blogs when syncing daily.
+
+`Include Customers`: Whether to include customers in general during sync. Disabling this, removes the ability to sync any customer details which are not the function of a completed order.
+
+`Include Free Products`: Whether to include Free Products in the sync. This is done based on a free_product attribute, not the sale price value, and is meant to target promotional items not meant to be sold individually.
+
+`Include Avg Review Score`: Include the native product review ratings in daily sync product data.
+
+`Include Variant Data`: Include lists with the product variation data, such as size or color.
+
+`Include Variant Stock`: Include a list with the stock count for each variant.
+
+`Include Variant Stock Tracking`: Choose whether the the Stock on the parent product is read directly or constructed in aggregate of its variants.
+
+`Include hidden Categories`: Whter to include categories in sync which are hidden in the menu frontend.
+
+### BigCommerce
+
+#### DataSync
+
+`Store Hash`: The unique hash associated with the store.
+
+`Client ID`: The client account ID.
+
+`Client Secret`: The one time reveal secret created for the API credentials.
+
+`Access Token`: The access token created for the API credentials.
+
+`Custom Attributes`: A comma separated list of attributes you wish to sync with the product data.
+
+`Get product review ratings`: Include the native product review ratings recorded in BigCommerce in the data sync.
+
+`Get local prices`: Include the price of product as defined for each currency it can be sold in.
+
+`Include Pages`: Include CMS pages and blogs in the daily sync.
+
+`Include Out-of-stock Products`: Include products with stock <= 0.
+
+`Only import visible categories`: Include only categories which are visible in menu.
+
+`Enable Realtime Updates`: Push product changes to Clerk as they are realised in BigCommerce.
+
+
+### TeamBlue (DanDomain / SmartWeb / ScanNet)
+
+#### DataSync
+
+`Shop ID`: The ID of the shop. Usually `shop` followed by a number.
+
+`API Username`: The username of the user created for the SOAP API.
+
+`API Password`: The password of the user created for the SOAP API.
+
+`Shop Language`: The Shop language. Usually an ISO code, frequently followed by a number. Eg. `DK1`, `SE`, `NO4`
+
+`Shop Currency`: The 3 letter currency code for which to get price data.
+
+`Custom Attributes`: A comma separated list of attributes you wish to include in the product data. 
+
+`Blog Page ID`: The ID of your Blog Overview page. This is needed if you wish to import your blogs in order to make them searchable for the /pages endpoint.
+
+`Include Inactive Products`: Whether to include deactivated products in sync.
+
+`Include Out-Of-Stock Products`: Include products with 0 or negative stock numbers.
