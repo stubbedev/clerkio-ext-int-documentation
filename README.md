@@ -339,6 +339,8 @@ the email within my.clerk.io, you can provide a message here while Collect Email
 
 `Additional Fields`: Additional fields you wish to import in the product data.
 
+`Strip/Trim Split Attributes`: When unchecked (Strip), it removes all spaces within strings during import e.g. turning ' Option 1' into 'Option1'. When checked (Trim), it only removes leading and trailing spaces, preserving spaces within the string e.g. resulting in 'Option 1'.
+
 `Additional Fields Raw`: Input the attribute slug from Additional Fields if you want the attribute to be imported without any sanitation. For example, if the attribute value contains a comma, using the raw value will not split the value into a list with the comma.
 
 `Disable Order Synchronization`: Disable orders from being sent in the daily sync. They will still be logged in real-time from visitors, so this can speed up the daily sync by being set.
