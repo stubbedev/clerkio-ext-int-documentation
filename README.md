@@ -339,6 +339,8 @@ the email within my.clerk.io, you can provide a message here while Collect Email
 
 `Additional Fields`: Additional fields you wish to import in the product data.
 
+`Additional Fields Raw`: Input the attribute slug from Additional Fields if you want the attribute to be imported without any sanitation. For example, if the attribute value contains a comma, using the raw value will not split the value into a list with the comma.
+
 `Disable Order Synchronization`: Disable orders from being sent in the daily sync. They will still be logged in real-time from visitors, so this can speed up the daily sync by being set.
 
 `Image Size`: The size of the imported images. Must be selected from one of the created types on the store from the dropdown. Please note, that just because an image type exists for a product, does not mean an image has been uploaded for that product. It is advised to check which on the client actually uses frontend and to pick that one.
